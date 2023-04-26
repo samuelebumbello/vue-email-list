@@ -5,8 +5,9 @@ createApp({
         return {
             title: 'List Email',
             url: 'https://flynn.boolean.careers/exercises/api/random/mail',
-            email: '',
-            load: false
+            emails: [],
+            limit: 10
+
         }
     },
 
@@ -14,13 +15,14 @@ createApp({
         getUrl(){
             axios.get(this.url)
             .then( res  => {
-                this.email = res.data.response;
-                this.load = true
+                this.emails.push(res.data.response);
             })
         }
     },
 
     mounted() {
-        this.getUrl()
+        for (let index = 0; index < this.limit; index++) {
+            this.getUrl()
+        }
     },
 }).mount('#app')
