@@ -22,4 +22,4 @@ createApp({
     mounted() {
         this.getUrl()
     },
-}).mount(#app)
+}).mount('#app')
